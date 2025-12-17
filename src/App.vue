@@ -1,11 +1,19 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { default as EmojiPicker } from 'vue-frimousse'
+import type { EmojiPickerEmoji } from 'vue-frimousse/src/packages/types.js';
+
+
+const onEmojiClick = (emoji: EmojiPickerEmoji) => {
+  console.log('Selected emoji:', emoji)
+}
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <EmojiPicker.Root :onEmojiSelect="onEmojiClick">
+    <EmojiPicker.Search placeholder="Search..." />
+    <EmojiPicker.Viewport>
+      <EmojiPicker.List />
+    </EmojiPicker.Viewport>
+  </EmojiPicker.Root>
 </template>
 
-<style scoped></style>
